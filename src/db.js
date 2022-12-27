@@ -5,20 +5,7 @@ const startPosts = [
     headline: "Lorem Ipsum",
     text: "Lorem Ipsum dolor sit amet, bla bla bla bla",
     hashtags: ["lorem", "Ipsum", "Dolor"],
-    comments: [
-      {
-        commentId: 11,
-        comment: "was für ne scheiße",
-      },
-      {
-        commentId: 12,
-        comment: "was für ne scheißechabo",
-      },
-      {
-        commentId: 13,
-        comment: "was für ne scheißebabos",
-      },
-    ],
+    comments: [],
     showComments: false,
   },
   {

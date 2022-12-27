@@ -3,6 +3,7 @@ import Posting from "../Posting/Posting";
 export default function PostingList({
   postings,
   onShowComments,
+  onDeletePost,
   onAddComment,
   onDeleteComment,
 }) {
@@ -14,6 +15,7 @@ export default function PostingList({
             key={post.id}
             post={post}
             onShowComments={onShowComments}
+            onDeletePost={onDeletePost}
             onAddComment={onAddComment}
             onDeleteComment={onDeleteComment}
           />

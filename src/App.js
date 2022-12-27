@@ -11,6 +11,14 @@ function App() {
 
   // havigationBar function
   function handleNavStatus(status) {
+    if (status === "home") {
+      setPostings(
+        postings.map((post) => {
+          post.showComments = false; //set all showComment to false
+          return post;
+        })
+      );
+    }
     setNavStatus(status);
   }
 
@@ -20,9 +28,26 @@ function App() {
       dateStyle: "medium",
     });
     setPostings([
-      { id: uid(), date, headline, text, hashtags, showComments: false },
+      {
+        id: uid(),
+        date,
+        headline,
+        text,
+        hashtags,
+        showComments: false,
+        comments: [],
+      },
       ...postings,
     ]);
+  }
+
+  // delete post
+  function handleDeletePost(id) {
+    setPostings(
+      postings.filter((post) => {
+        return post.id !== id;
+      })
+    );
   }
 
   // adding comment
@@ -39,15 +64,13 @@ function App() {
 
   //delete comment
   function handleDeleteComment(id, commentId) {
-    console.log(commentId);
-
     setPostings(
       postings.map((post) => {
         if (post.id === id) {
-          post.comments.filter((comment) => {
-            console.log(comment.commentId !== commentId);
+          const filteredComments = post.comments.filter((comment) => {
             return comment.commentId !== commentId;
           });
+          post.comments = filteredComments;
         }
         return post;
       })
@@ -74,6 +97,7 @@ function App() {
           <PostingList
             postings={postings}
             onShowComments={handleShowComments}
+            onDeletePost={handleDeletePost}
             onAddComment={handleAddComment}
             onDeleteComment={handleDeleteComment}
           />
