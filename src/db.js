@@ -4,7 +4,7 @@ const startPosts = [
     date: "20.05.2022",
     headline: "Lorem Ipsum",
     text: "Lorem Ipsum dolor sit amet, bla bla bla bla",
-    hashtags: ["lorem", "Ipsum", "Dolor"],
+    hashtags: ["#lorem", "#Ipsum", "#Dolor"],
     comments: [],
     showComments: false,
   },
@@ -13,7 +13,7 @@ const startPosts = [
     date: "21.05.2022",
     headline: "Lorem Ipsum zwei",
     text: "Lorem Ipsum dolor sit amet, bla bla bla bla",
-    hashtags: ["lorem", "Ipsum", "Dolor"],
+    hashtags: ["#lorem", "#Ipsum", "#Dolor", "#Dolor", "#Dolor", "#Dolor"],
     comments: [
       {
         commentId: 111,
@@ -35,7 +35,7 @@ const startPosts = [
     date: "22.05.2022",
     headline: "Lorem Ipsum drei",
     text: "Lorem Ipsum dolor sit amet, bla bla bla bla",
-    hashtags: ["lorem", "Petr", "Dolor"],
+    hashtags: ["#lorem", "#Petr", "#Dolor"],
     comments: [
       {
         commentId: 1111,
