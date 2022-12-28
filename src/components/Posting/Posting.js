@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import StyledButton from "../Button/StyledButton";
-import FormComments from "../Forms/FormComments";
+import Form from "../Forms/Form";
+import Textarea from "../Forms/Textarea";
 
 const StyledArticle = styled.article`
   background-color: var(--article-color);
@@ -78,6 +79,8 @@ export default function Posting({
   onDeletePost,
   onAddComment,
   onDeleteComment,
+  onPressSubmit,
+  pressSubmit,
 }) {
   return (
     <StyledArticle>
@@ -112,7 +115,21 @@ export default function Posting({
 
       {post.showComments && (
         <section>
-          <FormComments id={post.id} onAddComment={onAddComment} />
+          <Form
+            submitType={"comment"}
+            id={post.id}
+            onAddComment={onAddComment}
+            onPressSubmit={onPressSubmit}
+          >
+            <Textarea
+              name="comment"
+              id="comment"
+              label="write comment"
+              pressSubmit={pressSubmit}
+            />
+
+            <button type="submit">add comment</button>
+          </Form>
           <ul>
             {post.comments.length !== 0
               ? post.comments.map((comment) => {

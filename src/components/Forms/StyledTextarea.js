@@ -7,9 +7,13 @@ const StyledTextarea = styled.textarea`
   font-size: 14px;
   resize: none;
   overflow-y: hidden;
+  width: 100%;
+  border: 1px solid var(--font-color);
 
   &:focus {
     outline: none;
+    border: 2px solid var(--primary-color);
+    background-color: var(--secondary-color);
   }
 
   &::placeholder {

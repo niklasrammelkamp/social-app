@@ -1,43 +1,85 @@
-export default function Form({ onAddPost }) {
+import { useEffect, useRef, useState } from "react";
+
+export default function Form({
+  onAddPost,
+  submitType,
+  onAddComment,
+  id,
+  onPressSubmit,
+  children,
+}) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
+    onPressSubmit(" hallo");
 
-    console.log(data);
+    if (submitType === "comment") {
+      onAddComment(id, event.target.elements.comment.value);
+      event.target.reset();
+    }
 
-    const hashtags = data.hashtags.split("#");
+    if (submitType === "posting") {
+      const formData = new FormData(event.target);
+      const data = Object.fromEntries(formData);
 
-    const filteredHashtags = hashtags.filter((hashtag) => {
-      return hashtag; //removing empty string elements
-    });
+      const hashtags = data.hashtags.split("#");
 
-    const finalHashtags = filteredHashtags.map((hashtag) => {
-      const finalHashtag = "#" + hashtag; //adding #
-      return finalHashtag;
-    });
+      const filteredHashtags = hashtags.filter((hashtag) => {
+        return hashtag; //removing empty string elements
+      });
 
-    onAddPost({
-      headline: data.headline,
-      text: data.text,
-      hashtags: finalHashtags,
-    });
+      const finalHashtags = filteredHashtags.map((hashtag) => {
+        const finalHashtag = "#" + hashtag; //adding #
+        return finalHashtag;
+      });
 
-    event.target.reset();
-    event.target.elements.headline.focus();
+      onAddPost({
+        headline: data.headline,
+        text: data.text,
+        hashtags: finalHashtags,
+      });
+
+      event.target.reset();
+      event.target.elements.headline.focus();
+    }
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="headlineInput">headline</label>
-      <input type="text" id="headlineInput" name="headline" />
-      <label htmlFor="postInput">post</label>
-      <textarea id="postInput" name="text" />
-      <label htmlFor="hashtagInput">hashtags</label>
-      <textarea id="hashtagInput" name="hashtags" />
-
-      <button type="submit">Submit</button>
-    </form>
-  );
+  return <form onSubmit={handleSubmit}>{children}</form>;
 }
+
+// function handleSubmitPosting(event) {
+//   event.preventDefault();
+
+//   const formData = new FormData(event.target);
+//   const data = Object.fromEntries(formData);
+
+//   console.log(data);
+
+//   const hashtags = data.hashtags.split("#");
+
+//   const filteredHashtags = hashtags.filter((hashtag) => {
+//     return hashtag; //removing empty string elements
+//   });
+
+//   const finalHashtags = filteredHashtags.map((hashtag) => {
+//     const finalHashtag = "#" + hashtag; //adding #
+//     return finalHashtag;
+//   });
+
+//   onAddPost({
+//     headline: data.headline,
+//     text: data.text,
+//     hashtags: finalHashtags,
+//   });
+
+//   event.target.reset();
+//   event.target.elements.headline.focus();
+// }
+
+// function handleSubmitComment(event) {
+//   event.preventDefault();
+
+//   onAddComment(id, event.target.elements.comment.value);
+
+//   event.target.reset();
+// }

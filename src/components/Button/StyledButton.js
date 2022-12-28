@@ -10,10 +10,6 @@ const StyledButton = styled.button`
   border-radius: 50px;
   align-items: center;
 
-  ${({ show }) => {
-    console.log(show);
-  }}
-
   ${({ variant, show }) => {
     if (variant === "delete") {
       return css`
