@@ -5,11 +5,11 @@ import { useState } from "react";
 import PostingList from "./components/PostingList/PostingList";
 import { uid } from "uid";
 import Textarea from "./components/Forms/Textarea";
+import StyledButton from "./components/Button/StyledButton";
 
 function App() {
   const [navStatus, setNavStatus] = useState("home");
   const [postings, setPostings] = useState(startPosts);
-  const [pressSubmit, setPressSubmit] = useState("");
 
   // havigationBar function
   function handleNavStatus(status) {
@@ -93,12 +93,10 @@ function App() {
 
   return (
     <>
-      <Nav onNavStatus={handleNavStatus} />
+      <Nav onNavStatus={handleNavStatus} navStatus={navStatus} />
       <main>
         {navStatus === "home" && (
           <PostingList
-            onPressSubmit={setPressSubmit}
-            pressSubmit={pressSubmit}
             postings={postings}
             onShowComments={handleShowComments}
             onDeletePost={handleDeletePost}
@@ -112,7 +110,9 @@ function App() {
             <Textarea id="postInput" name="text" label={"post"} />
             <Textarea id="hashtagInput" name="hashtags" label={"hashtags"} />
 
-            <button type="submit">Submit</button>
+            <StyledButton variant="submit" type="submit">
+              Submit
+            </StyledButton>
           </Form>
         )}
       </main>

@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     --font-color: rgb(180, 180, 180);
     --headline-color: rgb(50, 50, 50);
     --primary-color: rgb(62,87,230);
+    --primary-color-shadow: rgba(62, 87, 230, 0.4);
     --secondary-color: rgb(230, 233, 250);
   }
 
@@ -22,7 +23,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     background-color: var(--body-color);
     font-family: 'Poppins';
-    font-weight: 400;
+    font-weight: 200;
   }
 
   main {

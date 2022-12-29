@@ -1,20 +1,18 @@
-import { useEffect, useRef, useState } from "react";
+import StyledForm from "./StyledForm";
 
 export default function Form({
   onAddPost,
   submitType,
   onAddComment,
   id,
-  onPressSubmit,
   children,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
 
-    onPressSubmit(" hallo");
-
     if (submitType === "comment") {
       onAddComment(id, event.target.elements.comment.value);
+      event.target.elements.comment.style.height = "33px";
       event.target.reset();
     }
 
@@ -39,12 +37,19 @@ export default function Form({
         hashtags: finalHashtags,
       });
 
+      event.target.elements.headlineInput.style.height = "33px";
+      event.target.elements.postInput.style.height = "33px";
+      event.target.elements.hashtagInput.style.height = "33px";
       event.target.reset();
       event.target.elements.headline.focus();
     }
   }
 
-  return <form onSubmit={handleSubmit}>{children}</form>;
+  return (
+    <StyledForm variant={submitType} onSubmit={handleSubmit}>
+      {children}
+    </StyledForm>
+  );
 }
 
 // function handleSubmitPosting(event) {

@@ -9,17 +9,23 @@ const StyledButton = styled.button`
   font-family: "Poppins";
   border-radius: 50px;
   align-items: center;
+  background-color: var(--primary-color);
+  color: var(--article-color);
+  padding: 8px 16px;
+  font-size: 12px;
+  justify-content: center;
 
-  ${({ variant, show }) => {
+  ${({ variant, show, special, navActive }) => {
     if (variant === "delete") {
       return css`
-        position: absolute;
-        right: 24px;
-        top: 19px;
+        position: ${special === "deleteComment" ? "relative" : "absolute"};
+        ${special === "deleteComment" ? "" : "right: 24px; top: 19px;"}
+
         color: var(--headline-color);
-        background-color: var(--secondary-color);
-        padding: 6px 12px;
-        font-size: 12px;
+        background-color: ${special === "deleteComment"
+          ? "white"
+          : "var(--secondary-color)"};
+        padding: ${special === "deleteComment" ? "0" : "6px 12px"};
 
         font-weight: 200;
 
@@ -34,13 +40,8 @@ const StyledButton = styled.button`
       `;
     }
 
-    if (variant === "comments") {
+    if (variant === "showComments") {
       return css`
-        background-color: var(--primary-color);
-        color: var(--article-color);
-        padding: 8px 16px;
-        font-size: 12px;
-
         &::before {
           content: "";
           background-image: url(${angleIcon});
@@ -50,6 +51,21 @@ const StyledButton = styled.button`
           margin-right: 4px;
           transform: rotate(${show ? "0" : "180deg"});
         }
+      `;
+    }
+
+    if (variant === "submit") {
+      return css`
+        width: 100%;
+      `;
+    }
+
+    if (variant === "nav") {
+      return css`
+        padding: 20px 40px;
+        width: 50%;
+        background: ${navActive ? "var(--primary-color)" : "none"};
+        color: ${navActive ? "white" : "var(--headline-color)"};
       `;
     }
   }}
