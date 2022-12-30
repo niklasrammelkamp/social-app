@@ -112,27 +112,31 @@ function App() {
         create={create}
       />
       <main>
-        <h1>Social App </h1>
         {navStatus === "home" && (
-          <PostingList
-            postings={postings}
-            onShowComments={handleShowComments}
-            onDeletePost={handleDeletePost}
-            onAddComment={handleAddComment}
-            onDeleteComment={handleDeleteComment}
-          />
+          <>
+            <h1>Social App </h1>
+            <PostingList
+              postings={postings}
+              onShowComments={handleShowComments}
+              onDeletePost={handleDeletePost}
+              onAddComment={handleAddComment}
+              onDeleteComment={handleDeleteComment}
+            />
+          </>
         )}
         {navStatus === "create" && (
-          <Form onAddPost={handleAddPost} submitType={"posting"}>
+          <>
             <h1>Crate a new Posting</h1>
-            <Textarea id="headlineInput" name="headline" label={"headline"} />
-            <Textarea id="postInput" name="text" label={"post"} />
-            <Textarea id="hashtagInput" name="hashtags" label={"hashtags"} />
+            <Form onAddPost={handleAddPost} submitType={"posting"}>
+              <Textarea id="headlineInput" name="headline" label={"headline"} />
+              <Textarea id="postInput" name="text" label={"post"} />
+              <Textarea id="hashtagInput" name="hashtags" label={"hashtags"} />
 
-            <StyledButton variant="submit" type="submit">
-              Submit
-            </StyledButton>
-          </Form>
+              <StyledButton variant="submit" type="submit">
+                Submit
+              </StyledButton>
+            </Form>
+          </>
         )}
       </main>
     </>

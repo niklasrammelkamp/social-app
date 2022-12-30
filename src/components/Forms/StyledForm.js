@@ -5,10 +5,6 @@ const StyledForm = styled.form`
   flex-direction: column;
   gap: 8px;
 
-  h1 {
-    margin-bottom: 12px;
-  }
-
   button {
     margin-top: 20px;
   }
