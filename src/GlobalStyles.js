@@ -27,8 +27,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   main {
-    padding: 50px 15px 15px 15px;
+    padding: 15px;
+  }
 
+  main > h1 {
+    margin-top: 12px;
+    margin-bottom: 18px;
+    text-align: center;
   }
 
   

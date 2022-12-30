@@ -6,12 +6,15 @@ import PostingList from "./components/PostingList/PostingList";
 import { uid } from "uid";
 import Textarea from "./components/Forms/Textarea";
 import StyledButton from "./components/Button/StyledButton";
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
   const [navStatus, setNavStatus] = useState("home");
   const [home, setHome] = useState(true);
   const [create, setCreate] = useState(false);
-  const [postings, setPostings] = useState(startPosts);
+  const [postings, setPostings] = useLocalStorageState("postings", {
+    defaultValue: startPosts,
+  });
 
   // havigationBar function
   function handleNavStatus(status) {
@@ -109,6 +112,7 @@ function App() {
         create={create}
       />
       <main>
+        <h1>Social App </h1>
         {navStatus === "home" && (
           <PostingList
             postings={postings}

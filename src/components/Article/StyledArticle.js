@@ -2,7 +2,8 @@ import styled, { css } from "styled-components";
 
 const StyledArticle = styled.article`
   background-color: var(--article-color);
-  padding: 24px;
+  padding: ${({ showComments }) =>
+    showComments ? "24px 24px 0 24px" : "24px"};
   margin-bottom: 24px;
   border-radius: 24px;
   display: flex;
@@ -72,11 +73,15 @@ const StyledArticle = styled.article`
 
   .addComments {
     background-color: var(--secondary-color);
-    outline: 24px solid var(--secondary-color);
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-top: -24px;
+    padding: 36px 36px 24px 36px;
     border-radius: 1px;
     z-index: 0;
     overflow: hidden;
     transition: 0.5s ease;
+    border-radius: 24px;
   }
 `;
 
