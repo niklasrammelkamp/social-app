@@ -62,10 +62,12 @@ const StyledButton = styled.button`
 
     if (variant === "nav") {
       return css`
-        padding: 20px 40px;
+        /* padding: 20px 40px;
         width: 50%;
-        background: ${navActive ? "var(--primary-color)" : "none"};
+        background: ${navActive ? "var(--primary-color)" : "none"};*/
         color: ${navActive ? "white" : "var(--headline-color)"};
+        background: none;
+        z-index: 20;
       `;
     }
   }}

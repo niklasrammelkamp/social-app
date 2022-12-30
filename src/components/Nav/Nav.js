@@ -1,20 +1,14 @@
-import { useState } from "react";
 import StyledButton from "../Button/StyledButton";
 import StyledNav from "./StyledNav";
 
-export default function Nav({ onNavStatus, navStatus }) {
-  const [home, setHome] = useState(true);
-  const [create, setCreate] = useState(false);
-
+export default function Nav({ onNavStatus, navStatus, home, create }) {
   return (
-    <StyledNav>
+    <StyledNav navStatus={navStatus}>
       <StyledButton
         navActive={home}
         variant="nav"
         onClick={() => {
           onNavStatus("home");
-          setHome(true);
-          setCreate(false);
         }}
       >
         Home
@@ -24,12 +18,11 @@ export default function Nav({ onNavStatus, navStatus }) {
         variant="nav"
         onClick={() => {
           onNavStatus("create");
-          setCreate(true);
-          setHome(false);
         }}
       >
         Create
       </StyledButton>
+      <div className="nav--background"></div>
     </StyledNav>
   );
 }

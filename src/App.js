@@ -9,17 +9,26 @@ import StyledButton from "./components/Button/StyledButton";
 
 function App() {
   const [navStatus, setNavStatus] = useState("home");
+  const [home, setHome] = useState(true);
+  const [create, setCreate] = useState(false);
   const [postings, setPostings] = useState(startPosts);
 
   // havigationBar function
   function handleNavStatus(status) {
+    //set all showComment to false
     if (status === "home") {
+      setHome(true);
+      setCreate(false);
       setPostings(
         postings.map((post) => {
-          post.showComments = false; //set all showComment to false
+          post.showComments = false;
           return post;
         })
       );
+    }
+    if (status === "create") {
+      setHome(false);
+      setCreate(true);
     }
     setNavStatus(status);
   }
@@ -93,7 +102,12 @@ function App() {
 
   return (
     <>
-      <Nav onNavStatus={handleNavStatus} navStatus={navStatus} />
+      <Nav
+        onNavStatus={handleNavStatus}
+        navStatus={navStatus}
+        home={home}
+        create={create}
+      />
       <main>
         {navStatus === "home" && (
           <PostingList
@@ -106,6 +120,7 @@ function App() {
         )}
         {navStatus === "create" && (
           <Form onAddPost={handleAddPost} submitType={"posting"}>
+            <h1>Crate a new Posting</h1>
             <Textarea id="headlineInput" name="headline" label={"headline"} />
             <Textarea id="postInput" name="text" label={"post"} />
             <Textarea id="hashtagInput" name="hashtags" label={"hashtags"} />

@@ -10,6 +10,10 @@ const StyledArticle = styled.article`
   gap: 12px;
   position: relative;
 
+  &:last-child {
+    margin-bottom: 90px;
+  }
+
   .date {
     color: var(--font-color);
     font-weight: 200;

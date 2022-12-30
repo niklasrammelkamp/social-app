@@ -33,7 +33,7 @@ export default function Posting({
         </StyledList>
       )}
 
-      {/*________________ SHOW COMMENTS ________________ */}
+      {/*________________ SHOW/HIDE COMMENTS ________________ */}
       <div className="comments">
         <p>comments ({post.comments.length})</p>
         <StyledButton
@@ -47,7 +47,6 @@ export default function Posting({
       </div>
 
       {/*________________ COMMENTS LIST ________________ */}
-
       {post.showComments && (
         <section className="addComments">
           <Form submitType={"comment"} id={post.id} onAddComment={onAddComment}>
